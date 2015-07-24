@@ -1,2 +1,2 @@
 # rcassidy_scripts
-Random public scripts I've worked on
+Repository for one-off scripts that Ryan C has worked on and wanted to put somewhere in source control

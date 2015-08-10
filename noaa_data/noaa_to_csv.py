@@ -39,7 +39,7 @@ elements_we_want = ["TMIN", "TMAX", "PRCP", "SNOW", "WSF2"]
 # take in a clump of month rows and turn it into 31 day rows
 # month data is a dictionary from [element type] -> [list of 31 values]
 def process_month_data(year, month, month_data, output_file_name):
-    with open(output_file_name, "a+") as my_out_file:
+    with open(output_file_name, "w+") as my_out_file:
         for day_index in range(0,31):
             a_line = []
             padded_day = format(day_index + 1, "02")
@@ -50,8 +50,8 @@ def process_month_data(year, month, month_data, output_file_name):
 
 def process_whole_file(first_month, first_year, the_file, output_file_name):
     # Don't append to the file you're writing out to -- remove it
-    if os.path.isfile(output_file_name):
-        os.remove(output_file_name) 
+    #if os.path.isfile(output_file_name):
+    #    os.remove(output_file_name) 
 
     month_data = {}
     last_seen_month = first_month
@@ -94,5 +94,5 @@ if __name__ == "__main__":
     first_year = "2000"
 
     noaa_data = urllib2.urlopen("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/USW00014739.dly")
-    output_file_name = "my_out.csv"
+    output_file_name = "noaa_latest.csv"
     process_whole_file(first_month, first_year, noaa_data, output_file_name)
